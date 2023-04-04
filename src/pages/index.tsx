@@ -1,56 +1,88 @@
 import {
-  Link as ChakraLink,
+  Box,
+  Center,
+  Flex,
+  IconButton,
+  Image,
+  Link,
   Text,
-  Code,
-  List,
-  ListIcon,
-  ListItem,
-} from '@chakra-ui/react'
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
-import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { CTA } from '../components/CTA'
-import { Footer } from '../components/Footer'
+export default function Home() {
+  const topPosition = useBreakpointValue({ base: "5%", md: "20%" });
+  const bottomPosition = useBreakpointValue({ base: "5%", md: "20%" });
 
-const Index = () => (
-  <Container height="100vh">
-    <Hero />
-    <Main>
-      <Text color="text">
-        Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-        <Code>TypeScript</Code>.
-      </Text>
-
-      <List spacing={3} my={0} color="text">
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </Main>
-
-    <DarkModeSwitch />
-    <Footer>
-      <Text>Next ❤️ Chakra</Text>
-    </Footer>
-    <CTA />
-  </Container>
-)
-
-export default Index
+  return (
+    <Box minH="100vh" display="flex" flexDirection="column">
+      <Box flexGrow={1} position="relative">
+        <Image
+          src="/montessori-toys.jpeg"
+          alt="Montessori Wooden Toys"
+          width="100%"
+          height="100%"
+          objectFit="cover"
+          position="absolute"
+          top="0"
+          left="0"
+          zIndex="-1"
+        />
+        <Center
+          bg="rgba(255, 255, 255, 0.7)"
+          p={6}
+          position="absolute"
+          top={topPosition}
+          left="50%"
+          transform="translateX(-50%)"
+          borderRadius="md"
+        >
+          <Box>
+            <Text fontSize="6xl" fontWeight="bold" fontFamily="Poppins" textAlign="center">
+              Tienda Juegos
+            </Text>
+            <Text fontSize="5xl" fontWeight="bold" fontFamily="Poppins" textAlign="center">
+              Próximamente
+            </Text>
+          </Box>
+        </Center>
+        <Center
+          bg="rgba(255, 255, 255, 0.7)"
+          p={4}
+          position="absolute"
+          bottom={bottomPosition}
+          left="50%"
+          transform="translateX(-50%)"
+          borderRadius="md"
+        >
+          <Box textAlign="center">
+            <Text fontSize="2xl" fontWeight="bold" fontFamily="Poppins" mb={4}>
+              Seguinos en nuestras Redes Sociales
+            </Text>
+            <Flex justifyContent="center" spacing={8}>
+              <Link href="https://www.instagram.com/somostiendajuegos" isExternal>
+                <IconButton
+                  aria-label="Instagram"
+                  icon={<FontAwesomeIcon icon={faInstagram} />}
+                  colorScheme="gray"
+                  variant="outline"
+                  fontSize="5xl"
+                />
+              </Link>
+              <Link href="https://wa.me/+5491123552064" isExternal>
+                <IconButton
+                  aria-label="WhatsApp"
+                  icon={<FontAwesomeIcon icon={faWhatsapp} />}
+                  colorScheme="gray"
+                  variant="outline"
+                  fontSize="5xl"
+                />
+              </Link>
+            </Flex>
+          </Box>
+        </Center>
+      </Box>
+    </Box>
+  );
+}

@@ -1,10 +1,10 @@
 import {
   Box,
   Center,
-  Flex,
   IconButton,
   Image,
   Link,
+  Stack,
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 export default function Home() {
-  const topPosition = useBreakpointValue({ base: "5%", md: "20%" });
+  const topPosition = useBreakpointValue({ base: "10%", md: "20%" });
   const bottomPosition = useBreakpointValue({ base: "5%", md: "20%" });
 
   return (
@@ -58,16 +58,16 @@ export default function Home() {
         >
           <Box textAlign="center">
             <Text fontSize="2xl" fontWeight="bold" fontFamily="Poppins" mb={4}>
-              Seguinos en nuestras Redes Sociales
+              Seguinos en nuestras redes sociales
             </Text>
-            <Flex justifyContent="center" spacing={8}>
+            <Stack direction="row" spacing={8} justifyContent="center">
               <Link href="https://www.instagram.com/somostiendajuegos" isExternal>
                 <IconButton
                   aria-label="Instagram"
                   icon={<FontAwesomeIcon icon={faInstagram} />}
                   colorScheme="gray"
                   variant="outline"
-                  fontSize="5xl"
+                  fontSize="4xl"
                 />
               </Link>
               <Link href="https://wa.me/+5491123552064" isExternal>
@@ -76,10 +76,10 @@ export default function Home() {
                   icon={<FontAwesomeIcon icon={faWhatsapp} />}
                   colorScheme="gray"
                   variant="outline"
-                  fontSize="5xl"
+                  fontSize="4xl"
                 />
               </Link>
-            </Flex>
+            </Stack>
           </Box>
         </Center>
       </Box>
